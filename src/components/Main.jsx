@@ -1,29 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import Countries from './Countries';
-import Country from './Country';
+import CountriesSearch from './CountriesSearch';
 
+import CountryService from '../services/CountryService';
+import Country from './Country';
+import Regions from './Regions';
 const Main = () => {
   const [searchValue, setSearch] = useState('');
-  const [films, SetFilms] = useState('');
+  const [regionValue, setRegion] = useState('');
+  const [country, setCountry] = useState('');
   const setSearchValue = (val) => {
+    setSearch('');
     setSearch(val);
   };
-  const getFilms = async (searchValue) => {
-    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=263d22d8`;
-    const response = await fetch(url);
-    const responseJson = await response.json();
-    SetFilms(responseJson);
-    console.log(responseJson);
+  const settSearchValue = (val) => {
+    setRegion(val);
   };
 
-  useEffect(() => {
-    getFilms(searchValue);
-  }, [searchValue]);
-
+  const setCountryValue = (val) => {
+    setCountry(val);
+  };
+  // const setRegionValue = (val) => {
+  //   setSearch(val);
+  // };
+  // useEffect(() => {
+  //   console.log(searchValue);
+  // }, [searchValue]);
   return (
     <div>
-      <Countries setSearchValue={setSearchValue} />
-      <Country />
+      <CountriesSearch setSearchValue={setSearchValue} />
+      <Regions settSearchValue={settSearchValue} />
+      <CountryService
+        setCountryValue={setCountryValue}
+        searchValue={searchValue}
+        regionValue={regionValue}
+      />
     </div>
   );
 };

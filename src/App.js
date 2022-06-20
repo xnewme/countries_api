@@ -1,10 +1,18 @@
 import Main from './components/Main';
-
+import { createTheme, NextUIProvider } from '@nextui-org/react';
+const darkTheme = createTheme({
+  type: 'dark',
+  theme: {
+    colors: {},
+  },
+});
 function App() {
   return (
-    <div className="App">
-      <Main />
-    </div>
+    <NextUIProvider theme={darkTheme}>
+      <div>
+        <Main />
+      </div>
+    </NextUIProvider>
   );
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Text, Grid, Container } from '@nextui-org/react';
+import { Card, Text, Grid, Container, Row } from '@nextui-org/react';
 function importAll(r) {
   return r.keys().map(r);
 }
@@ -21,6 +21,9 @@ const Regions = ({ settSearchValue }) => {
 
   return (
     <Grid.Container gap={1} justify="flex-start">
+      <Row>
+        <h1>Continents:</h1>
+      </Row>
       {Object.values(listOfRegions).map((item, index) => (
         <Grid xs={12} sm={1.7} key={index}>
           <Card

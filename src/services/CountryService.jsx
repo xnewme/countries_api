@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL, listOfRegions } from './Data';
-import { Card, Grid, Text } from '@nextui-org/react';
+import { Card, Grid, Row, Text } from '@nextui-org/react';
 import Country from '../components/Country';
 
 const CountryService = (props) => {
@@ -16,9 +16,9 @@ const CountryService = (props) => {
     )
   ) {
     hmmm = `/region/${props.searchValue}`;
-  } else if (props.searchValue == '' && props.regionValue != '') {
+  } else if (props.searchValue.length < 2 && props.regionValue != '') {
     hmmm = `/region/${props.regionValue}`;
-  } else if (props.searchValue !== '') {
+  } else if (props.searchValue !== '' && props.searchValue.length > 2) {
     hmmm = `/name/${props.searchValue}`;
   } else {
     hmmm = `/all/`;
@@ -73,6 +73,9 @@ const CountryService = (props) => {
   console.log(props.searchValue);
   return (
     <Grid.Container gap={1} justify="flex-start">
+      <Row>
+        <h1>Countries:</h1>
+      </Row>
       {results.map((item, index) => (
         <Grid xs={12} sm={1.7} key={index}>
           <Card

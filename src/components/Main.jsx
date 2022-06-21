@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import CountriesSearch from './CountriesSearch';
 
 import CountryService from '../services/CountryService';
-import Country from './Country';
 import Regions from './Regions';
 const Main = () => {
   const [searchValue, setSearch] = useState('');
   const [regionValue, setRegion] = useState('');
-  const [country, setCountry] = useState('');
+
   const setSearchValue = (val) => {
     setSearch('');
     setSearch(val);
@@ -16,24 +15,15 @@ const Main = () => {
     setRegion(val);
   };
 
-  const setCountryValue = (val) => {
-    setCountry(val);
-  };
-  // const setRegionValue = (val) => {
-  //   setSearch(val);
-  // };
-  // useEffect(() => {
-  //   console.log(searchValue);
-  // }, [searchValue]);
   return (
     <div>
       <CountriesSearch setSearchValue={setSearchValue} />
-      <Regions settSearchValue={settSearchValue} />
-      <CountryService
-        setCountryValue={setCountryValue}
-        searchValue={searchValue}
-        regionValue={regionValue}
-      />
+      {searchValue.length < 2 ? (
+        <Regions settSearchValue={settSearchValue} />
+      ) : (
+        ''
+      )}
+      <CountryService searchValue={searchValue} regionValue={regionValue} />
     </div>
   );
 };

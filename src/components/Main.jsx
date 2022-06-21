@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CountriesSearch from './CountriesSearch';
-
 import CountryService from '../services/CountryService';
 import Regions from './Regions';
+
 const Main = () => {
   const [searchValue, setSearch] = useState('');
   const [regionValue, setRegion] = useState('');

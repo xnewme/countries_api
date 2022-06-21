@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Text, Grid, Container, Row } from '@nextui-org/react';
+import { Card, Text, Grid, Row } from '@nextui-org/react';
+import { listOfRegions } from '../services/Data';
+import '../style/style.css';
 function importAll(r) {
   return r.keys().map(r);
 }
 const images = importAll(require.context('../images', false, /\.(jpg)$/));
 const Regions = ({ settSearchValue }) => {
   const [Regiona, setRegion] = useState('');
-  const listOfRegions = {
-    0: 'Africa',
-    1: 'Antartica',
-    2: 'Asia',
-    3: 'Europe',
-    4: 'North America',
-    5: 'Oceania',
-    6: 'South America',
-  };
+
   useEffect(() => {
     settSearchValue(Regiona);
   }, [Regiona]);
@@ -25,21 +19,22 @@ const Regions = ({ settSearchValue }) => {
         <h1>Continents:</h1>
       </Row>
       {Object.values(listOfRegions).map((item, index) => (
-        <Grid xs={12} sm={1.7} key={index}>
+        <Grid xs={4} sm={1.7} md={1.7} lg={1.7} key={index}>
           <Card
             isPressable
             isHoverable
             variant="bordered"
-            onPress={(value) => setRegion(item)}
+            onPress={() => setRegion(item)}
           >
             <Card.Body>
               <Text>{item}</Text>
             </Card.Body>
             <Card.Image
+              className="regions"
               src={images[index]}
               objectFit="cover"
               width="100%"
-              alt="Card image background"
+              alt={item}
             />
           </Card>
         </Grid>

@@ -1,5 +1,5 @@
 #Live preview:
-https://github.com/xnewme/countries_api
+https://countries-api-nu.vercel.app/
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
